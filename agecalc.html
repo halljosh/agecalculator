@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>How Old are You?</title>
+    <link href="eli.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Orange_question_mark.svg/1200px-Orange_question_mark.svg.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function testResults (form) {
+			var birthdate = new Date(form.birthday.value);
+			var year = birthdate.getFullYear();
+			var cur = new Date();
+			var diff = cur-birthdate; 
+			var age = (diff/31557600000).toFixed(form.decimal.value);
+			if (age < 0) {
+				alert ("That birthdate hasn't happened yet!");
+			} else if (age > 999) {
+				alert ("Your age is a little too big for this calculator!")
+			} else {
+				if (year % 12 === 0) 
+					{document.getElementById("chinese").innerHTML = "monkey"}
+				if (year % 12 === 1)
+					{document.getElementById("chinese").innerHTML = "rooster"}
+				if (year % 12 === 2)
+					{document.getElementById("chinese").innerHTML = "dog"}
+				if (year % 12 === 3)
+					{document.getElementById("chinese").innerHTML = "pig"}
+				if (year % 12 === 4)
+					{document.getElementById("chinese").innerHTML = "rat"}
+				if (year % 12 === 5)
+					{document.getElementById("chinese").innerHTML = "ox"}
+				if (year % 12 === 6)
+					{document.getElementById("chinese").innerHTML = "tiger"}
+				if (year % 12 === 7)
+					{document.getElementById("chinese").innerHTML = "rabbit"}
+				if (year % 12 === 8)
+					{document.getElementById("chinese").innerHTML = "dragon"}
+				if (year % 12 === 9)
+					{document.getElementById("chinese").innerHTML = "snake"}
+				if (year % 12 === 10)
+					{document.getElementById("chinese").innerHTML = "horse"}
+				if (year % 12 === 11)
+					{document.getElementById("chinese").innerHTML = "sheep"}
+    			document.getElementById("age").innerHTML = age;
+			}
+		}	
+	</script>
+</head>
+
+<body>
+    <div class="container1">
+        <form name="test" action="" method="get">
+            <h3>When were you born?</h3>
+            <input class="birthdate" type="date" name="birthday" id="birthday" value="">
+            <h4>How many decimal places would you like?</h4>
+            <select name="decimal" size="1">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select> <br><br>
+            <input class="submit" type="button" name="button" value="Submit" onClick="testResults(this.form)">
+        </form>
+    </div>
+    <div class="container">
+        <h1>Right now you are&nbsp;<a id="age">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>&nbsp;years old.</h1>
+    </div>
+    <div class ="container">
+    	<h4 class = "chinese">(and you were born in the year of the&nbsp;<a id="chinese">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>)</h4>
+    </div>
+</body>
+
+</html>
