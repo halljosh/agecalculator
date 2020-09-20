@@ -13,7 +13,14 @@
 			var year = birthdate.getFullYear();
 			var cur = new Date();
 			var diff = cur-birthdate; 
-			var age = (diff/31557600000).toFixed(form.decimal.value);
+			let age;
+			let decimal = form.decimal.value;
+			console.log(decimal);
+			if (decimal == 0) {
+				age = Math.floor(diff/31557600000);
+			} else {
+				age = (diff/31557600000).toFixed(decimal);
+			}
 			if (age < 0) {
 				alert ("That birthdate hasn't happened yet!");
 			} else if (age > 999) {
